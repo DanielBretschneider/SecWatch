@@ -22,12 +22,12 @@ func Run() int {
 	switch command {
 
 	// help: Lists supported commands including short explanation
-	case "help":
+	case "help", "--help", "-h":
 		printHelp()
 		return 0
 
 	// version: Provides information on the programms version
-	case "version":
+	case "version", "--version", "-v":
 		fmt.Printf("secwatch v%s\n", version)
 		return 0
 
