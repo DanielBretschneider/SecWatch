@@ -3,6 +3,7 @@ package cli
 import (
 	"fmt"
 	"os"
+	"secwatch/internal/logreader"
 )
 
 const version = "0.1.0"
@@ -29,6 +30,24 @@ func Run() int {
 	// version: Provides information on the programms version
 	case "version", "--version", "-v":
 		fmt.Printf("secwatch v%s\n", version)
+		return 0
+
+	// read: read in file to analyze
+	case "read", "--read", "-r":
+		if len(os.Args) < 3 {
+			fmt.Println("Usage: secwatch read <file>")
+		}
+
+		lines, err := logreader.ReadFiles(os.Args[2])
+		if err != nil {
+			fmt.Printf("Error reading file: %v\n", err)
+			return 1
+		}
+
+		for _, line := range lines {
+			fmt.Println(line)
+		}
+
 		return 0
 
 	// default: Used for unknown commands
