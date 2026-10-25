@@ -8,11 +8,11 @@ import (
 const version = "0.1.0"
 
 // Run handles cli arguments and executes the command
-func Run() {
+func Run() int {
 	// check args length
 	if len(os.Args) < 2 {
 		fmt.Println("Usage: secwatch <command>")
-		return
+		return 2
 	}
 
 	// given command by args
@@ -24,14 +24,17 @@ func Run() {
 	// help: Lists supported commands including short explanation
 	case "help":
 		printHelp()
+		return 0
 
 	// version: Provides information on the programms version
 	case "version":
 		fmt.Printf("secwatch v%s\n", version)
+		return 0
 
 	// default: Used for unknown commands
 	default:
 		fmt.Printf("Unknown command: %s\n", command)
+		return 1
 	}
 }
 

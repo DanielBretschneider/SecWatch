@@ -1,11 +1,15 @@
 package main
 
-import "secwatch/internal/cli"
+import (
+	"os"
+	"secwatch/internal/cli"
+)
 
 /*
  * Main() - Main entry point of secwatch
  */
 func main() {
 	// start cli
-	cli.Run()
+	os.Exit(cli.Run())
+
 }
