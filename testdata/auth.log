@@ -1,0 +1,6 @@
+2026-10-25T01:10:12Z INFO sshd: Accepted password for alice from 192.0.2.10
+2026-10-25T01:12:45Z WARN sshd: Failed password for admin from 192.0.2.20
+2026-10-25T01:12:48Z WARN sshd: Failed password for admin from 192.0.2.20
+2026-10-25T01:13:01Z WARN sshd: Failed password for root from 192.0.2.20
+2026-10-25T01:15:30Z INFO sshd: Accepted publickey for bob from 192.0.2.30
+2026-10-25T01:18:00Z ERROR sshd: Connection closed by 192.0.2.40
