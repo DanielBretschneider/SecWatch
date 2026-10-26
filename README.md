@@ -16,14 +16,20 @@ This is a learning project intended for local use. Features will be implemented 
 
 ```text
 secwatch/
+├── cmd
+│   └── secwatch
+│       └── main.go
 ├── go.mod
-├── cmd/
-│   └── secwatch/
-│       └── main.go
-├── internal/
-│   └── cli/
-│       └── cli.go
-└── testdata/
+├── internal
+│   ├── cli
+│   │   └── cli.go
+│   ├── logreader
+│   │   └── logreader.go
+│   └── source
+│       └── journal.go
+├── LICENSE
+├── README.md
+└── testdata
     └── auth.log
 ```
 
