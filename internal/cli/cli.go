@@ -5,6 +5,7 @@ import (
 	"os"
 	"secwatch/internal/logreader"
 	"secwatch/internal/source"
+	"strconv"
 )
 
 const version = "0.1.5"
@@ -54,19 +55,35 @@ func Run() int {
 	// journal: read in journald logs for inspection
 	case "journal", "--journal", "-j":
 		// default value of lines that get fetched from journald
-		lines := "20"
+		lines := 20
 
 		// if user wants to fetch a specific number of lines
 		if len(os.Args) >= 3 {
 			// number of lines as string
-			lines = os.Args[2]
+			strLines := os.Args[2]
+
+			// check if given characters are int
+			int_lines, err := strconv.Atoi(strLines)
+			if err != nil {
+				fmt.Println("Error: Number of lines must be integer")
+				return 2
+			}
+
+			// Make sure number is a positive integer
+			if int_lines <= 0 {
+				fmt.Println("Error: number of lines must be greater than zero")
+				return 2
+			}
+
+			// assign value since conversion worked
+			lines = int_lines
 
 			// info
-			fmt.Printf("[*] User set 'lines' to: %s\n", lines)
+			fmt.Printf("[*] User set 'lines' to: %d\n", lines)
 		}
 
 		// get output
-		output, err := source.ReadJournal(lines)
+		output, err := source.ReadJournal(strconv.Itoa(lines))
 		if err != nil {
 			fmt.Printf("Error reading journal: %v\n", err)
 			return 1
