@@ -1,6 +1,9 @@
+
 # secwatch
 
 **secwatch** is a local Linux Security Event Explorer written in Go. Its purpose is to help me improve my Go programming and Linux skills by building a practical CLI application for collecting, parsing, searching, and analyzing security-relevant events.
+
+<img width="1220" height="566" alt="Screenshot_20261026_194727" src="https://github.com/user-attachments/assets/27b707a8-3287-4ac1-97a6-c2c322177eb6" />
 
 ## Goals
 
