@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"os"
 	"secwatch/internal/logreader"
+	"secwatch/internal/source"
 )
 
-const version = "0.1.0"
+const version = "0.1.5"
 
 // Run handles cli arguments and executes the command
 func Run() int {
@@ -50,6 +51,31 @@ func Run() int {
 
 		return 0
 
+	// journal: read in journald logs for inspection
+	case "journal", "--journal", "-j":
+		// default value of lines that get fetched from journald
+		lines := "20"
+
+		// if user wants to fetch a specific number of lines
+		if len(os.Args) >= 3 {
+			// number of lines as string
+			lines = os.Args[2]
+
+			// info
+			fmt.Printf("[*] User set 'lines' to: %s\n", lines)
+		}
+
+		// get output
+		output, err := source.ReadJournal(lines)
+		if err != nil {
+			fmt.Printf("Error reading journal: %v\n", err)
+			return 1
+		}
+
+		// print it - (TEST)
+		fmt.Print(string(output))
+		return 0
+
 	// default: Used for unknown commands
 	default:
 		fmt.Printf("Unknown command: %s\n", command)
@@ -64,7 +90,8 @@ func printHelp() {
 	fmt.Println("Usage: secwatch <command>")
 	fmt.Println()
 	fmt.Println("Commands:")
-	fmt.Println("  help     Show this help message")
-	fmt.Println("  version  Show version information")
-	fmt.Println("  read     Read a log file")
+	fmt.Println("  help             Show this help message")
+	fmt.Println("  version          Show version information")
+	fmt.Println("  read             Read a log file")
+	fmt.Println("  journal [lines]  Show recent system journal entries (default: 20)")
 }
