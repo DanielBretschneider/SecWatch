@@ -129,5 +129,5 @@ func printHelp() {
 	fmt.Println("  version          Show version information")
 	fmt.Println("  read             Read a log file")
 	fmt.Println("  journal [lines]  Show recent system journal entries (default: 20)")
-	fmt.Println("  failed   Show authentication failure events")
+	fmt.Println("  failed           Show authentication failure events")
 }
