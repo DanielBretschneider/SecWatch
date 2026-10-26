@@ -26,7 +26,6 @@ func ReadJournal(lines string) ([]byte, error) {
 	return output, nil
 }
 
-
 // ReadFailedLogins returns journal entries matching common
 // authentication failure messages from the current boot.
 func ReadFailedLogins() ([]byte, error) {
@@ -35,7 +34,7 @@ func ReadFailedLogins() ([]byte, error) {
 		"-b",
 		"--no-pager",
 		"-g",
-		"Failed password|authentication failure"
+		"Failed password|authentication failure",
 	)
 
 	// get output from execute command

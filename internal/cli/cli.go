@@ -93,6 +93,24 @@ func Run() int {
 		fmt.Print(string(output))
 		return 0
 
+	// failed: Used to quickly filter out messages that indicate a failed login attempt
+	case "failed", "--failed", "-f":
+		// get cmd output
+		output, err := source.ReadFailedLogins()
+		if err != nil {
+			fmt.Printf("[-] Error reading failed login events: %w\n", err)
+		}
+
+		// check if no entries returned
+		if len(output) == 0 {
+			fmt.Println("[-] No matching authentication failures found.")
+			return 0
+		}
+
+		// print command output
+		fmt.Print(string(output))
+		return 0
+
 	// default: Used for unknown commands
 	default:
 		fmt.Printf("Unknown command: %s\n", command)
@@ -111,4 +129,5 @@ func printHelp() {
 	fmt.Println("  version          Show version information")
 	fmt.Println("  read             Read a log file")
 	fmt.Println("  journal [lines]  Show recent system journal entries (default: 20)")
+	fmt.Println("  failed   Show authentication failure events")
 }
