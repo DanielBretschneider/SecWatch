@@ -66,4 +66,5 @@ func printHelp() {
 	fmt.Println("Commands:")
 	fmt.Println("  help     Show this help message")
 	fmt.Println("  version  Show version information")
+	fmt.Println("  read     Read a log file")
 }
