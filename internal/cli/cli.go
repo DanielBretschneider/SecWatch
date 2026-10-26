@@ -42,7 +42,7 @@ func Run() int {
 
 		lines, err := logreader.ReadFiles(os.Args[2])
 		if err != nil {
-			fmt.Printf("Error reading file: %v\n", err)
+			fmt.Printf("[-] Error reading file: %v\n", err)
 			return 1
 		}
 
@@ -65,13 +65,13 @@ func Run() int {
 			// check if given characters are int
 			int_lines, err := strconv.Atoi(strLines)
 			if err != nil {
-				fmt.Println("Error: Number of lines must be integer")
+				fmt.Println("[-] Error: Number of lines must be integer")
 				return 2
 			}
 
 			// Make sure number is a positive integer
 			if int_lines <= 0 {
-				fmt.Println("Error: number of lines must be greater than zero")
+				fmt.Println("[-] Error: number of lines must be greater than zero")
 				return 2
 			}
 
@@ -85,7 +85,7 @@ func Run() int {
 		// get output
 		output, err := source.ReadJournal(strconv.Itoa(lines))
 		if err != nil {
-			fmt.Printf("Error reading journal: %v\n", err)
+			fmt.Printf("[-] Error reading journal: %v\n", err)
 			return 1
 		}
 

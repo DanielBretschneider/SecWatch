@@ -19,9 +19,31 @@ func ReadJournal(lines string) ([]byte, error) {
 	// cmd.Output() captures standard output as a byte slice
 	output, err := cmd.Output()
 	if err != nil {
-		return nil, fmt.Errorf("read system journal: %w", err)
+		return nil, fmt.Errorf("[-] read system journal: %w", err)
 	}
 
 	// return output (journald log line)
+	return output, nil
+}
+
+
+// ReadFailedLogins returns journal entries matching common
+// authentication failure messages from the current boot.
+func ReadFailedLogins() ([]byte, error) {
+	cmd := exec.Command(
+		"journalctl",
+		"-b",
+		"--no-pager",
+		"-g",
+		"Failed password|authentication failure"
+	)
+
+	// get output from execute command
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, fmt.Errorf("[-] reading failed login events failed: %w\n", err)
+	}
+
+	// return output
 	return output, nil
 }
