@@ -33,13 +33,17 @@ secwatch/
 ├── LICENSE
 ├── README.md
 └── testdata
-    └── auth.log
+|   └── auth.log
+└── secwatch    
 ```
 
 - `cmd/secwatch/` — Application entry point.
 - `internal/cli/` — Command-line interface and argument handling.
+- `internal/logreader/` — File reading functionality for parsing log files.
+- `internal/journal/` — Systemd journal and security event source integration.
 - `testdata/` — Sample logs for development and testing.
 - `go.mod` — Go module definition and dependency management.
+- `secwatch` — Built ELF 64-Bit LSB executable, x86-64 (SYSV), statically linked.
 
 Additional packages for event models, log parsing, event sources, storage, and detection rules will be introduced as the project grows.
 
