@@ -55,4 +55,16 @@ Additional packages for event models, log parsing, event sources, storage, and d
 
 ## Status
 
-Early development — starting with the CLI skeleton.
+CLI and several commands are working:
+- version, --version, -v
+- help, --help, -h
+- read, --read, -r
+- journal, --journal, -j
+- failed, --failed, -f
+
+Next Steps:
+- Add Event Parsing
+- Build Filtering/Querying
+- Add SQLite Storage
+- Implement Detection Rules
+- Explore Auditd Integration
