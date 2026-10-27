@@ -1,3 +1,9 @@
+// secwatch/internal/cli/cli.go
+// Author: db
+// Date: 2026-10-27
+// Version: 0.1.5
+// Description: Command-line interface and argument handling for secwatch
+
 package cli
 
 import (

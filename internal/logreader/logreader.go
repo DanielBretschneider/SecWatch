@@ -1,3 +1,9 @@
+// secwatch/internal/logreader/logreader.go
+// Author: db
+// Date: 2026-10-27
+// Version: 0.1.5
+// Description: File reading functionality for parsing log files
+
 package logreader
 
 import (

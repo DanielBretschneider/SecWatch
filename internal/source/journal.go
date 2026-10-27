@@ -1,3 +1,9 @@
+// secwatch/internal/source/journal.go
+// Author: db
+// Date: 2026-10-27
+// Version: 0.1.5
+// Description: Systemd journal and security event source integration
+
 package source
 
 import (
